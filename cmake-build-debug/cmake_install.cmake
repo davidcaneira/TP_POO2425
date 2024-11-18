@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/anton/Desktop/universidade/Poo/TP_POO2425
+# Install script for directory: C:/Users/David/Desktop/POO/TP_POO2425
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/anton/Desktop/universidade/Poo/TP_POO2425/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/David/Desktop/POO/TP_POO2425/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
