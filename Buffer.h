@@ -1,4 +1,3 @@
-// buffer.h
 #ifndef BUFFER_H
 #define BUFFER_H
 
@@ -34,10 +33,7 @@ private:
     int colunas;
     int cursorLinha;
     int cursorColuna;
-    char* tela;  // Array unidimensional para armazenar os caracteres
-
-    // Calcula o índice de um caractere com base em linha e coluna
-    int calcularIndice(int linha, int coluna) const;
+    char** tela;  // Array bidimensional para armazenar os caracteres
 };
 
 #endif

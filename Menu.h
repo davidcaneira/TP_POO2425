@@ -6,6 +6,8 @@
 #include "buffer.h"
 #include <fstream>
 #include <iostream>
+#include <sstream>
+
 using namespace std;
 
 class Menu {
@@ -17,7 +19,7 @@ public:
     void sair();
 
     // Funções para Fase 2
-    void iniciarSimulacao(const std::string& nomeFicheiro);
+    bool iniciarSimulacao(const std::string& nomeFicheiro);
     void executarComandos(const string &nomeFicheiro);
     static void avancarTurnos(int n);
     void comprarCaravana(char cidade, char tipoCaravana);
@@ -45,6 +47,7 @@ private:
     Mapa* mapa;          // Ponteiro para o mapa
 
     // Funções auxiliares para processar comandos
+    bool fase1 = true;
     void exibirMenuFase1();
     void exibirMenuFase2();
     void exibirEstado();

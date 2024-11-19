@@ -25,8 +25,11 @@ void Menu::iniciar() {
                 if (nomeFicheiro.empty()) {
                     cout << "Erro: Nome do ficheiro não pode ser vazio.\n";
                 } else {
-                    iniciarSimulacao(nomeFicheiro);
-                    fase1 = false;
+                    if (iniciarSimulacao(nomeFicheiro)) {
+                        fase1 = false;
+                    } else {
+                        fase1 = true;
+                    }
                 }
             } else if (comando == "sair") {
                 cout << "A sair...\n";
@@ -167,12 +170,18 @@ void Menu::exibirMenuFase2() {
     cout << "Digite um comando: ";
 }
 
-void Menu::iniciarSimulacao(const std::string& nomeFicheiro) {
+bool Menu::iniciarSimulacao(const std::string& nomeFicheiro) {
+    std::ifstream arquivoTeste(nomeFicheiro);
+    if (!arquivoTeste) {
+        std::cerr << "Erro: O arquivo \"" << nomeFicheiro << "\" não existe ou não pode ser aberto.\n";
+        return false;
+    }
+
     cout << "Iniciando simulação com o arquivo: " << nomeFicheiro << endl;
     Configuracoes configuracoes;
     if (!configuracoes.carregarConfiguracoes(nomeFicheiro)) {
         std::cerr << "Erro ao carregar as configurações.\n";
-        return;
+        return false;
     }
 
     mapa = new Mapa();
@@ -180,12 +189,13 @@ void Menu::iniciarSimulacao(const std::string& nomeFicheiro) {
         std::cerr << "Erro ao carregar o mapa.\n";
         delete mapa;
         mapa = nullptr;
-        return;
+        return false;
     }
 
     std::cout << "Mapa carregado com sucesso.\n";
     mapa->mostrarMapa();
     configuracoes.mostrarConfiguracoes();
+    return true;
 }
 
 void Menu::terminarSimulacao() {

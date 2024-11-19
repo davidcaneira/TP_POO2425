@@ -3,9 +3,9 @@
 #include <fstream>
 #include <sstream>
 
-Configuracoes::Configuracoes() : moedas(0), preco_compra_mercadoria(0), preco_venda_mercadoria(0),
-                                 preco_caravana(0), instantes_entre_novos_itens(0), duracao_item(0),
-                                 max_itens(0), instantes_entre_novos_barbaros(0), duracao_barbaros(0) {}
+Configuracoes::Configuracoes() : moedas(1000), preco_compra_mercadoria(1), preco_venda_mercadoria(2),
+                                 preco_caravana(100), instantes_entre_novos_itens(10), duracao_item(20),
+                                 max_itens(5), instantes_entre_novos_barbaros(40), duracao_barbaros(60) {}
 
 bool Configuracoes::carregarConfiguracoes(const std::string& nomeFicheiro) {
     std::ifstream file(nomeFicheiro);

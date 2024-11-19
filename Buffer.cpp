@@ -1,4 +1,3 @@
-// buffer.cpp
 #include "buffer.h"
 #include <cstring>  // Para usar memset e strlen
 #include <iostream>
@@ -6,25 +5,34 @@
 // Construtor: inicializa o buffer com espaços
 Buffer::Buffer(int linhas, int colunas)
     : linhas(linhas), colunas(colunas), cursorLinha(0), cursorColuna(0) {
-    tela = new char[linhas * colunas];
+    // Alocação dinâmica para o array bidimensional
+    tela = new char*[linhas];
+    for (int i = 0; i < linhas; ++i) {
+        tela[i] = new char[colunas];
+    }
     limpar();  // Inicializa o buffer com espaços
 }
 
 // Destrutor: libera a memória alocada para o buffer
 Buffer::~Buffer() {
+    for (int i = 0; i < linhas; ++i) {
+        delete[] tela[i];
+    }
     delete[] tela;
 }
 
 // Esvazia o buffer (preenche com espaços)
 void Buffer::limpar() {
-    memset(tela, ' ', linhas * colunas);
+    for (int i = 0; i < linhas; ++i) {
+        memset(tela[i], ' ', colunas);
+    }
 }
 
 // Imprime o conteúdo do buffer na consola
 void Buffer::imprimir() const {
     for (int i = 0; i < linhas; ++i) {
         for (int j = 0; j < colunas; ++j) {
-            std::cout << tela[calcularIndice(i, j)];
+            std::cout << tela[i][j];
         }
         std::cout << '\n';
     }
@@ -40,7 +48,7 @@ void Buffer::moverCursor(int linha, int coluna) {
 
 // Imprime um caractere na posição do cursor e move o cursor
 void Buffer::imprimirChar(char c) {
-    tela[calcularIndice(cursorLinha, cursorColuna)] = c;
+    tela[cursorLinha][cursorColuna] = c;
     cursorColuna++;
     if (cursorColuna >= colunas) {
         cursorColuna = 0;
@@ -78,9 +86,4 @@ Buffer& Buffer::operator<<(const char* str) {
 Buffer& Buffer::operator<<(int numero) {
     imprimirInt(numero);
     return *this;
-}
-
-// Calcula o índice do array unidimensional com base nas coordenadas
-int Buffer::calcularIndice(int linha, int coluna) const {
-    return linha * colunas + coluna;
 }
