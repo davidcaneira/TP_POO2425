@@ -1,5 +1,11 @@
-//
-// Created by anton on 13/11/2024.
-//
-
+#include <iostream>
 #include "Cidade.h"
+
+Cidade::Cidade(int x, int y, char tipo): Elemento(x, y, tipo) {
+
+}
+
+void Cidade::getInfo() {
+    std::cout << "Estou na posicao: " << x <<"," << y;
+}
+

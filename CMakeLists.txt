@@ -27,4 +27,11 @@ add_executable(projeto main.cpp
         Tempestade.cpp
         Tempestade.h
         Configuracoes.cpp
-        Configuracoes.h)
+        Configuracoes.h
+        Elemento.cpp
+        Elemento.h
+        Deserto.cpp
+        Deserto.h
+        Montanha.cpp
+        Montanha.h)
+

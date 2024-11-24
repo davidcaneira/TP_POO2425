@@ -5,12 +5,16 @@
 #ifndef CARAVANA_H
 #define CARAVANA_H
 #include <iostream>
+#include <vector>
 
+#include "Elemento.h"
 
-class Caravana {
-    /*
+class Caravana: public Elemento{
+
 protected:
     int id;                     // Identificador único da caravana
+    static int nextId;
+    static std::vector<Caravana*> caravanas;
     int tripulantes;            // Número de tripulantes
     int capacidadeCarga;        // Capacidade máxima de carga (em toneladas)
     int capacidadeAgua;         // Capacidade máxima de água (em litros)
@@ -21,10 +25,12 @@ protected:
 
 public:
     // Construtor
-    Caravana(int id, int tripulantes, int capacidadeCarga, int capacidadeAgua, int posX, int posY);
+  //  Caravana(int id, int tripulantes, int capacidadeCarga, int capacidadeAgua, int posX, int posY);
+    Caravana(int x, int y, char tipo, int tripulantes, int capacidadeCarga, int capacidadeAgua);
+    static Caravana* getCaravana(int id);
+    void getInfo() override;
 
-    virtual void mover(char direcao);        // Move a caravana em uma direção (D, E, C, B, CE, CD, BE, BD)
-    virtual void exibirInfo() const;         // Exibe as informações da caravana
+
     virtual void atualizarEstado();          // Atualiza o estado da caravana (ex.: consumo de água)
 
     // Getters e setters
@@ -36,12 +42,12 @@ public:
     int getCargaAtual() const;
     void setCargaAtual(int valor);
 
-    virtual std::string getTipo() const = 0; // Retorna o tipo de caravana (Comércio, Militar, Secreta)
+    //virtual std::string getTipo() const = 0; // Retorna o tipo de caravana (Comércio, Militar, Secreta)
     virtual void comportamentoAutonomo();   // Comportamento específico no modo autônomo
 
     // Destrutor virtual
     virtual ~Caravana() = default;
-    */
+
 };
 
 

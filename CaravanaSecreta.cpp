@@ -3,3 +3,7 @@
 //
 
 #include "CaravanaSecreta.h"
+
+CaravanaSecreta::CaravanaSecreta(int x, int y): Caravana(x, y, 'S', 0,0,0) {
+
+}

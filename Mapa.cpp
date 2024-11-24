@@ -3,7 +3,9 @@
 #include <sstream>
 #include <iostream>
 
-Mapa::Mapa() : linhas(0), colunas(0), layout(nullptr) {}
+Mapa::Mapa() : linhas(0), colunas(0), layout(nullptr) {
+
+}
 
 Mapa::~Mapa() {
     // Libera a memória alocada para o layout
@@ -15,7 +17,7 @@ Mapa::~Mapa() {
     }
 }
 
-bool Mapa::carregarMapa(const std::string& filename) {
+bool Mapa::carregarMapa(const std::string &filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
         std::cerr << "Erro ao abrir o arquivo: " << filename << std::endl;
@@ -50,7 +52,7 @@ bool Mapa::carregarMapa(const std::string& filename) {
         return false;
     }
 
-    layout = new char*[linhas];
+    layout = new char *[linhas];
     for (int i = 0; i < linhas; ++i) {
         layout[i] = new char[colunas];
     }
@@ -66,7 +68,7 @@ bool Mapa::carregarMapa(const std::string& filename) {
             for (int j = 0; j < colunas; ++j) { // && j < line.length()
                 // Garantir que estamos apenas copiando caracteres imprimíveis
                 //if (std::isprint(line[j])) {
-                    layout[lineCount][j] = line[j];
+                layout[lineCount][j] = line[j];
                 //} else {
                 //    mapa[lineCount][j] = '.';  // Substituir caracteres não imprimíveis por '.'
                 //}
@@ -94,8 +96,60 @@ void Mapa::mostrarMapa() const {
     }
 }
 
+void Mapa::criaElementosMapa() {
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            char tipo = layout[i][j];
+            if (tipo == '.') {
+                elementos.push_back(new Deserto(i, j, tipo));
+            } else if (islower(tipo)) {
+                elementos.push_back(new Cidade(i, j, tipo));
+            } else if (isdigit(tipo)) {
+                criaCaravana(i, j, tipo);
+            } else if (tipo == '+') {
+                elementos.push_back(new Montanha(i, j, tipo));
+            }
+        }
+    }
+}
+
+void Mapa::criaCaravana(int x, int y, char num) {
+    if (num >= '0' && num <= '3') {
+        elementos.push_back(new CaravanaComercio(x, y));
+    } else if (num >= '4' && num <= '6') {
+        elementos.push_back(new CaravanaMilitar(x, y));
+    } else if (num >= '7' && num <= '9') {
+        elementos.push_back(new CaravanaSecreta(x, y));
+    }
+}
+
+Elemento *Mapa::getCidade(char letra) {
+    for (auto *elemento: elementos) {
+        if (islower(elemento->getTipo())) {
+            if (elemento->getTipo() == letra)
+                return elemento;
+        }
+    }
+    return nullptr;
+}
+
+const std::vector<Elemento *> &Mapa::getElementos() const {
+    return elementos;
+}
+
 int Mapa::getColunas() const { return colunas; }
+
 int Mapa::getLinhas() const { return linhas; }
+
+Caravana* Mapa::getCaravana(int id) {
+    return Caravana::getCaravana(id);
+}
+
+
+
+
+
+
 
 
 /*#include "mapa.h"

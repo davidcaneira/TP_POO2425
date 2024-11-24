@@ -5,9 +5,12 @@
 #ifndef CARAVANASECRETA_H
 #define CARAVANASECRETA_H
 
+#include "Caravana.h"
 
 
-class CaravanaSecreta {
+class CaravanaSecreta: public Caravana{
+public:
+    CaravanaSecreta(int x, int y);
 
 };
 

@@ -3,33 +3,18 @@
 //
 
 #include "Caravana.h"
-/*
-Caravana::Caravana(int id, int tripulantes, int capacidadeCarga, int capacidadeAgua, int posX, int posY)
-    : id(id), tripulantes(tripulantes), capacidadeCarga(capacidadeCarga), capacidadeAgua(capacidadeAgua),
-      aguaAtual(capacidadeAgua), cargaAtual(0), posX(posX), posY(posY), modoAutonomo(false) {}
 
-void Caravana::mover(char direcao) {
-    switch (direcao) {
-    case 'D': posX++; break; // Direita
-    case 'E': posX--; break; // Esquerda
-    case 'C': posY--; break; // Cima
-    case 'B': posY++; break; // Baixo
-    case 'CE': posX--; posY--; break; // Cima-Esquerda
-    case 'CD': posX++; posY--; break; // Cima-Direita
-    case 'BE': posX--; posY++; break; // Baixo-Esquerda
-    case 'BD': posX++; posY++; break; // Baixo-Direita
-    default:
-        std::cout << "Direção inválida!\n";
-    }
-}
+int Caravana::nextId = 1;
+std::vector<Caravana*> Caravana::caravanas;
 
-void Caravana::exibirInfo() const {
-    std::cout << "Caravana ID: " << id << "\n"
-              << "Tipo: " << getTipo() << "\n"
-              << "Tripulantes: " << tripulantes << "\n"
-              << "Carga Atual: " << cargaAtual << " toneladas\n"
-              << "Água Atual: " << aguaAtual << " litros\n"
-              << "Posição: (" << posX << ", " << posY << ")\n";
+
+//Caravana::Caravana(int id, int tripulantes, int capacidadeCarga, int capacidadeAgua, int posX, int posY)
+//    : id(id), tripulantes(tripulantes), capacidadeCarga(capacidadeCarga), capacidadeAgua(capacidadeAgua),
+//      aguaAtual(capacidadeAgua), cargaAtual(0), posX(posX), posY(posY), modoAutonomo(false) {}
+
+Caravana::Caravana(int x, int y, char tipo, int tripulantes, int capacidadeCarga, int capacidadeAgua): Elemento(x,y,tipo),
+tripulantes(tripulantes),capacidadeCarga(capacidadeCarga),capacidadeAgua(capacidadeAgua),id(nextId++) {
+    caravanas.push_back(this);
 }
 
 void Caravana::atualizarEstado() {
@@ -39,6 +24,23 @@ void Caravana::atualizarEstado() {
         tripulantes--; // Perde tripulantes se ficar sem água
     }
 }
+void Caravana::getInfo() {
+    std::cout << "Caravana ID: " << id << ", Tipo: " << tipo
+              << ", Pos: (" << x << ", " << y << ")"
+              << ", Tripulantes: " << tripulantes
+              << ", Carga: " << capacidadeCarga
+              << ", Água: " << capacidadeAgua << '\n';
+}
+
+Caravana* Caravana::getCaravana(int id) {
+    for(auto* caravana: caravanas){
+        if(caravana->id == id){
+            return caravana;
+        }
+    }
+    return nullptr;
+}
+
 
 int Caravana::getId() const { return id; }
 int Caravana::getTripulantes() const { return tripulantes; }
@@ -48,4 +50,13 @@ void Caravana::setAguaAtual(int valor) { aguaAtual = valor; }
 int Caravana::getCargaAtual() const { return cargaAtual; }
 void Caravana::setCargaAtual(int valor) { cargaAtual = valor; }
 
-*/
+void Caravana::comportamentoAutonomo() {
+
+}
+
+
+
+
+
+
+
