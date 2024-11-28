@@ -195,7 +195,7 @@ bool Menu::iniciarSimulacao(const std::string& nomeFicheiro) {
     std::cout << "Mapa carregado com sucesso.\n";
     mapa->mostrarMapa();
     configuracoes.mostrarConfiguracoes();
-    mapa->criaElementosMapa();
+    //mapa->criaElementosMapa();
     return true;
 }
 
@@ -222,14 +222,14 @@ void Menu::listarPrecos() {
 
 void Menu::listarCidade(char cidade) {
     cout << "Listando informações da cidade " << cidade << ".\n";
-    Elemento *c = mapa->getCidade(cidade);
-    c->getInfo();
+    //Elemento *c = mapa->getCidade(cidade);
+    //c->getInfo();
 }
 
 void Menu::mostrarCaravana(int caravanaId) {
     cout << "Mostrando informações da caravana com ID " << caravanaId << ".\n";
-    Caravana *caravana = mapa->getCaravana(caravanaId);
-    caravana->getInfo();
+    //Caravana *caravana = mapa->getCaravana(caravanaId);
+    //caravana->getInfo();
 }
 
 void Menu::comprarMercadoria(int caravanaId, int quantidade) {

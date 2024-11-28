@@ -18,7 +18,7 @@ public:
     // Construtor
     Configuracoes();
 
-    // Método para carregar as configurações a partir de um arquivo
+    // Metodo para carregar as configurações a partir de um arquivo
     bool carregarConfiguracoes(const std::string& nomeFicheiro);
 
     // Métodos getters para acessar os valores
