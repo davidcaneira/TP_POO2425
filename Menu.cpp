@@ -23,7 +23,7 @@ void Menu::iniciar() {
                 string nomeFicheiro;
                 cin >> nomeFicheiro;
                 if (nomeFicheiro.empty()) {
-                    cout << "Erro: Nome do ficheiro não pode ser vazio.\n";
+                    cout << "Erro: Nome do ficheiro nao pode ser vazio.\n";
                 } else {
                     if (iniciarSimulacao(nomeFicheiro)) {
                         fase1 = false;
@@ -35,7 +35,7 @@ void Menu::iniciar() {
                 cout << "A sair...\n";
                 break;
             } else {
-                cout << "Comando inválido para a fase 1.\n";
+                cout << "Comando invalido para a fase 1.\n";
             }
         } else {
             exibirMenuFase2();
@@ -45,7 +45,7 @@ void Menu::iniciar() {
                 string nomeFicheiro;
                 cin >> nomeFicheiro;
                 if (nomeFicheiro.empty()) {
-                    cout << "Erro: Nome do ficheiro não pode ser vazio.\n";
+                    cout << "Erro: Nome do ficheiro nao pode ser vazio.\n";
                 } else {
                     //executarComandos(nomeFicheiro);
                 }
@@ -53,7 +53,7 @@ void Menu::iniciar() {
                 int turnos;
                 cin >> turnos;
                 if (turnos <= 0) {
-                    cout << "Erro: O número de turnos deve ser maior que 0.\n";
+                    cout << "Erro: O numero de turnos deve ser maior que 0.\n";
                 } else {
                     avancarTurnos(turnos);
                 }
@@ -61,7 +61,7 @@ void Menu::iniciar() {
                 char cidade, tipoCaravana;
                 cin >> cidade >> tipoCaravana;
                 if (tipoCaravana != 'C' && tipoCaravana != 'M' && tipoCaravana != 'S') {
-                    cout << "Erro: Tipo de caravana inválido. Use 'C', 'M' ou 'S'.\n";
+                    cout << "Erro: Tipo de caravana invalido. Use 'C', 'M' ou 'S'.\n";
                 } else {
                     comprarCaravana(cidade, tipoCaravana);
                 }
@@ -130,7 +130,7 @@ void Menu::iniciar() {
                 terminarSimulacao();
                 fase1 = true;
             } else {
-                cout << "Comando inválido para a fase 2.\n";
+                cout << "Comando invalido para a fase 2.\n";
             }
         }
     }
@@ -173,14 +173,14 @@ void Menu::exibirMenuFase2() {
 bool Menu::iniciarSimulacao(const std::string& nomeFicheiro) {
     std::ifstream arquivoTeste(nomeFicheiro);
     if (!arquivoTeste) {
-        std::cerr << "Erro: O arquivo \"" << nomeFicheiro << "\" não existe ou não pode ser aberto.\n";
+        std::cerr << "Erro: O arquivo \"" << nomeFicheiro << "\" nao existe ou nao pode ser aberto.\n";
         return false;
     }
 
-    cout << "Iniciando simulação com o arquivo: " << nomeFicheiro << endl;
+    cout << "Iniciando simulacao com o arquivo: " << nomeFicheiro << endl;
     Configuracoes configuracoes;
     if (!configuracoes.carregarConfiguracoes(nomeFicheiro)) {
-        std::cerr << "Erro ao carregar as configurações.\n";
+        std::cerr << "Erro ao carregar as configuracoes.\n";
         return false;
     }
 
@@ -200,13 +200,13 @@ bool Menu::iniciarSimulacao(const std::string& nomeFicheiro) {
 }
 
 void Menu::terminarSimulacao() {
-    cout << "Simulação terminada.\n";
+    cout << "Simulacao terminada.\n";
     delete mapa;
     mapa = nullptr;
 }
 
 void Menu::avancarTurnos(int n) {
-    cout << "Avançando " << n << " turno(s).\n";
+    cout << "Avancando " << n << " turno(s).\n";
     // Implementar lógica para avançar turnos
 }
 
@@ -216,18 +216,18 @@ void Menu::comprarCaravana(char cidade, char tipoCaravana) {
 }
 
 void Menu::listarPrecos() {
-    cout << "Listando preços das mercadorias.\n";
+    cout << "Listando precos das mercadorias.\n";
     // Implementar lógica para listar os preços
 }
 
 void Menu::listarCidade(char cidade) {
-    cout << "Listando informações da cidade " << cidade << ".\n";
+    cout << "Listando informacoes da cidade " << cidade << ".\n";
     //Elemento *c = mapa->getCidade(cidade);
     //c->getInfo();
 }
 
 void Menu::mostrarCaravana(int caravanaId) {
-    cout << "Mostrando informações da caravana com ID " << caravanaId << ".\n";
+    cout << "Mostrando informacoes da caravana com ID " << caravanaId << ".\n";
     //Caravana *caravana = mapa->getCaravana(caravanaId);
     //caravana->getInfo();
 }
@@ -243,27 +243,27 @@ void Menu::venderMercadoria(int caravanaId) {
 }
 
 void Menu::moverCaravana(int caravanaId, const string &direcao) {
-    cout << "Movendo caravana " << caravanaId << " para a direção " << direcao << ".\n";
+    cout << "Movendo caravana " << caravanaId << " para a direcao " << direcao << ".\n";
     // Implementar movimento da caravana
 }
 
 void Menu::colocarAuto(int caravanaId) {
-    cout << "Ativando modo automático para a caravana " << caravanaId << ".\n";
+    cout << "Ativando modo automatico para a caravana " << caravanaId << ".\n";
     // Implementar modo automático
 }
 
 void Menu::pararAuto(int caravanaId) {
-    cout << "Desativando modo automático para a caravana " << caravanaId << ".\n";
+    cout << "Desativando modo automatico para a caravana " << caravanaId << ".\n";
     // Implementar parar modo automático
 }
 
 void Menu::criarBarbaro(int linha, int coluna) {
-    cout << "Criando bárbaro na posição (" << linha << ", " << coluna << ").\n";
+    cout << "Criando barbaro na posicao (" << linha << ", " << coluna << ").\n";
     // Implementar criação de bárbaro
 }
 
 void Menu::criarTempestade(int linha, int coluna, int raio) {
-    cout << "Criando tempestade de areia na posição (" << linha << ", " << coluna << ") com raio " << raio << ".\n";
+    cout << "Criando tempestade de areia na posicao (" << linha << ", " << coluna << ") com raio " << raio << ".\n";
     // Implementar criação de tempestade
 }
 
@@ -293,6 +293,6 @@ void Menu::listarEstados() {
 }
 
 void Menu::deletarEstado(const string& nome) {
-    cout << "Deletando o estado com o nome " << nome << ".\n";
+    cout << "Eliminando o estado com o nome " << nome << ".\n";
     // Implementar deletação de estado
 }
