@@ -4,14 +4,16 @@
 
 class Elemento {
 protected:
-    int x, y;
+    int x, y; //coordenadas Mapa
     char tipo; // ('c', '+', '1,' etc)
 
 public:
     Elemento(int x, int y, char tipo);
 
-    //virtual ~Elemento();
-    virtual void getInfo();
+    virtual ~Elemento() = default; //Destrutor virtual para suporte de herança
+    virtual void getInfo() const; //Pode ser escrito por cima por derivadas
+
+    //Métodos de consulta
     int getX() const;
     int getY() const;
     char getTipo() const;

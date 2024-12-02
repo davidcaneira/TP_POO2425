@@ -12,15 +12,20 @@ private:
     int cursorcoluna;
 public:
     Buffer(int linhas, int colunas);
+    ~Buffer(); // Destrutor para liberar memória
     void limpaBuffer();
     void moveCursor(int linha, int coluna);
     void imprimirChar(char c);
     void imprimirString(const char *str);
     void imprimirInt(int i);
+
     void mostrarTela();
+
+    void mostrarTela() const;
     Buffer& operator<<(char c);
     Buffer& operator<<(const char *str);
     Buffer& operator<<(int i);
 };
+
 
 #endif

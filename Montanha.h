@@ -10,7 +10,7 @@
 class Montanha: public Elemento{
 public:
     Montanha(int x, int y, char tipo);
-    void getInfo() override;
+    void getInfo();
 };
 
 

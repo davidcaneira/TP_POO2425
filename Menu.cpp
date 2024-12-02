@@ -1,7 +1,7 @@
 #include "menu.h"
 
 // Construtor e destruidor
-Menu::Menu() {
+Menu::Menu(Mapa* mapa) : mapa(mapa) {
     mapa = nullptr;
 }
 
@@ -125,7 +125,7 @@ void Menu::iniciar() {
             } else if (comando == "dels") {
                 string nome;
                 cin >> nome;
-                deletarEstado(nome);
+                eliminarEstado(nome);
             } else if (comando == "terminar") {
                 terminarSimulacao();
                 fase1 = true;
@@ -217,7 +217,18 @@ void Menu::comprarCaravana(char cidade, char tipoCaravana) {
 
 void Menu::listarPrecos() {
     cout << "Listando precos das mercadorias.\n";
-    // Implementar lógica para listar os preços
+    // Verifica se o mapa e as cidades existem
+    if (mapa == nullptr) {
+        cout << "Erro: Mapa não carregado.\n";
+        return;
+    }
+
+    // Acessa todas as cidades e exibe seus preços
+    const std::vector<Cidade>& cidades = mapa->getCidades();
+    for (const auto& cidade : cidades) {
+        cidade.exibirPrecos();  // Chama a função que exibe os preços de cada cidade
+        cout << "-----------------------------\n";
+    }
 }
 
 void Menu::listarCidade(char cidade) {
@@ -292,7 +303,36 @@ void Menu::listarEstados() {
     // Implementar listagem de estados
 }
 
-void Menu::deletarEstado(const string& nome) {
-    cout << "Eliminando o estado com o nome " << nome << ".\n";
-    // Implementar deletação de estado
+void Menu::eliminarEstado(const string& nome) {
+    bool encontrado = false;
+
+    // Agora usa o metodo getElementos() para acessar o vetor de elementos
+    for (auto it = mapa->getElementos().begin(); it != mapa->getElementos().end(); ++it) {
+        Cidade* cidade = dynamic_cast<Cidade*>(*it);  // Tentando converter para uma cidade
+        if (cidade && cidade->getNome() == nome) {
+            delete *it;  // Elimina o objeto
+            mapa->getElementos().erase(it);  // Remove do vetor de elementos
+            std::cout << "Cidade " << nome << " deletada com sucesso.\n";
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        // Se não for encontrada, procurar por outros tipos de elementos
+        for (auto it = mapa->getElementos().begin(); it != mapa->getElementos().end(); ++it) {
+            Caravana* caravana = dynamic_cast<Caravana*>(*it);  // Tentando converter para uma caravana
+            if (caravana && caravana->getId() == std::stoi(nome)) {  // Exemplo de ID de caravana
+                delete *it;
+                mapa->getElementos().erase(it);
+                std::cout << "Caravana com ID " << nome << " deletada com sucesso.\n";
+                encontrado = true;
+                break;
+            }
+        }
+    }
+
+    if (!encontrado) {
+        std::cout << "Elemento ou estado com nome " << nome << " não encontrado.\n";
+    }
 }

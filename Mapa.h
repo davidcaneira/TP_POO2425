@@ -19,14 +19,16 @@ class Mapa{
     int colunas;
     Buffer buffer;
     char** mapaLogico;
-    vector<Elemento*> elementos;
+    vector<Elemento*> elementos; // Vetor de elementos (privado)
+    std::vector<Cidade> cidades; // Lista de cidades
 public:
     Mapa();
+    ~Mapa();  // Destrutor
     bool carregarMapa(const string &nomeFicheiro);
     void mostrarMapa();
     void criaElementos();
-
-
+    const std::vector<Cidade>& getCidades() const; // // Metodo que retorna todas as cidades
+    std::vector<Elemento*>& getElementos(); // Retorna o vetor de elementos
 
 };
 

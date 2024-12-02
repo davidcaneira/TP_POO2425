@@ -2,6 +2,7 @@
 #include <cstring>  // Para usar memset e strlen
 #include <iostream>
 
+//Construtor
 Buffer::Buffer(int linhas, int colunas): linhas(linhas), colunas(colunas), cursorlinha(0), cursorcoluna(0) {
     tela = new char*[linhas];
     for (int i = 0; i < linhas; i++) {
@@ -10,6 +11,15 @@ Buffer::Buffer(int linhas, int colunas): linhas(linhas), colunas(colunas), curso
     limpaBuffer();
 }
 
+//Destrutor
+Buffer::~Buffer() {
+    for (int i = 0; i < linhas; i++) {
+        delete[] tela[i];
+    }
+    delete[] tela;
+}
+
+//Limpa o buffer e preenche com espaços vazios
 void Buffer::limpaBuffer() {
     for (int i = 0; i < linhas; i++) {
         for (int j = 0; j < colunas; j++) {
@@ -17,6 +27,8 @@ void Buffer::limpaBuffer() {
         }
     }
 }
+
+//Move o cursor para uma nova posição
 void Buffer::moveCursor(int linha, int coluna) {
     if (linha>=0 && linha<linhas && coluna>=0 && coluna<colunas) {
         cursorlinha = linha;
@@ -24,6 +36,7 @@ void Buffer::moveCursor(int linha, int coluna) {
     }
 }
 
+//Imprime um caractere na posição atual do cursor
 void Buffer::imprimirChar(char c) {
     tela[cursorlinha][cursorcoluna] = c;
     cursorcoluna++;
@@ -33,16 +46,20 @@ void Buffer::imprimirChar(char c) {
     }
 }
 
+//Imprime uma string
 void Buffer::imprimirString(const char *str) {
     while (*str != '\0') {
         imprimirChar(*str++);
     }
 }
+
+//Imprime um inteiro
 void Buffer::imprimirInt(int i) {
     string str=to_string(i);
     imprimirString(str.c_str());
 }
 
+// Mostra o conteúdo do buffer na tela
 void Buffer::mostrarTela() {
     for (int i = 0; i < linhas; i++) {
         for (int j = 0; j < colunas; j++) {
@@ -53,6 +70,7 @@ void Buffer::mostrarTela() {
     }
 }
 
+// Sobrecarga do operador <<
 Buffer& Buffer::operator<<(char c) {
     imprimirChar(c);
     return *this;

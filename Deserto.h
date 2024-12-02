@@ -7,7 +7,7 @@
 class Deserto: public Elemento{
 public:
     Deserto(int x, int y, char tipo);
-    void getInfo() override;
+    void getInfo();
 };
 
 

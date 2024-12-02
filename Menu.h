@@ -7,13 +7,23 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <string>
 
 using namespace std;
 
 class Menu {
+private:
+    Mapa* mapa;          // Ponteiro para o mapa
+
+    // Funções auxiliares para processar comandos
+    bool fase1 = true;
+    void exibirMenuFase1();
+    void exibirMenuFase2();
+    void exibirEstado();
 public:
     Menu();
     ~Menu();
+    Menu(Mapa* mapa);
 
     // Funções para Fase 1
     void sair();
@@ -38,19 +48,12 @@ public:
     void salvarEstado(const string &nome);
     void carregarEstado(const string &nome);
     void listarEstados();
-    void deletarEstado(const string &nome);
+    void eliminarEstado(const string &nome);
     void terminarSimulacao();
 
     void iniciar();
 
-private:
-    Mapa* mapa;          // Ponteiro para o mapa
 
-    // Funções auxiliares para processar comandos
-    bool fase1 = true;
-    void exibirMenuFase1();
-    void exibirMenuFase2();
-    void exibirEstado();
 };
 
 #endif
