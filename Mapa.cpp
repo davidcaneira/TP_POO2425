@@ -70,53 +70,23 @@ void Mapa::mostrarMapa() {
 }
 
 void Mapa::criaElementos() {
-    for (int i = 0; i < linhas; i++) {
-        for (int j = 0; j < colunas; j++) {
-            char tipo = mapaLogico[i][j];
 
-            if (tipo == '.') {
-                // Adiciona um Deserto
-                elementos.push_back(new Deserto(i, j, tipo));
-            } else if (islower(tipo)) {
-                // Para as cidades (quando o tipo é uma letra minúscula)
-                std::string nomeCidade = "Cidade_" + std::to_string(i) + "_" + std::to_string(j);
-
-                // Inicializar precoCompra e precoVenda com valores válidos
-                int precoCompra = 10 + (i * 2);  // Exemplo de preço de compra
-                int precoVenda = 20 + (j * 3);  // Exemplo de preço de venda
-
-                // Cria a cidade e a adiciona ao vetor de elementos
-                elementos.push_back(new Cidade(nomeCidade, i, j, precoCompra, precoVenda));
-            } else if (isdigit(tipo)) {
-                // Se for um número, talvez você queira criar outro tipo de objeto
-                // elementos.push_back();
-            } else if (tipo == '+') {
-                // Adiciona uma Montanha
-                elementos.push_back(new Montanha(i, j, tipo));
-            }
-        }
-    }
-}
-
-/*
-void Mapa::criaElementos() {
     for (int i = 0; i < linhas; i++) {
         for (int j = 0; j < colunas; j++) {
             char tipo = mapaLogico[i][j];
             if (tipo == '.') {
                 elementos.push_back(new Deserto(i, j, tipo));
             } else if (islower(tipo)) {
-                std::string nomeCidade = "Cidade_" + std::to_string(i) + "_" + std::to_string(j);
-                elementos.push_back(new Cidade(nomeCidade, i, j, precoCompra, precoVenda));
+                elementos.push_back(new Cidade(i, j, tipo));
             } else if (isdigit(tipo)) {
-                // elementos.push_back();
+               // criaCaravana(i, j, tipo);
             } else if (tipo == '+') {
                 elementos.push_back(new Montanha(i, j, tipo));
             }
         }
     }
 }
-*/
+
 
 const std::vector<Cidade>& Mapa::getCidades() const {
     return cidades;  // Retorna a lista de cidades

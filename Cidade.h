@@ -12,7 +12,7 @@ private:
 
 public:
     // Construtor da Cidade
-    Cidade(std::string nome, int x, int y, int precoCompra, int precoVenda);
+    Cidade(int x, int y, char tipo);
 
     // Métodos para acessar os preços
     int getPrecoCompra() const;

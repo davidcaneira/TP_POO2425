@@ -4,8 +4,8 @@ project(projeto)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(projeto main.cpp
-        Menu.cpp
-        Menu.h
+        Simulador.cpp
+        Simulador.h
         Buffer.cpp
         Buffer.h
         Caravana.cpp
@@ -18,8 +18,6 @@ add_executable(projeto main.cpp
         CaravanaSecreta.h
         Cidade.cpp
         Cidade.h
-        Comandos.cpp
-        Comandos.h
         Item.cpp
         Item.h
         Mapa.cpp

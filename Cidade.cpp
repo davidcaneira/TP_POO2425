@@ -2,8 +2,8 @@
 #include "Cidade.h"
 using namespace std;
 
-Cidade::Cidade(std::string nome, int x, int y, int precoCompra, int precoVenda)
-    : Elemento(x, y, 'C'), precoCompra(precoCompra), precoVenda(precoVenda), nome(nome) {}
+Cidade::Cidade( int x, int y, char tipo)
+    : Elemento(x, y, tipo) {}
 
 int Cidade::getPrecoCompra() const {
     return precoCompra;
