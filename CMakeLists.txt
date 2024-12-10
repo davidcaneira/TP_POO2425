@@ -18,8 +18,6 @@ add_executable(projeto main.cpp
         CaravanaSecreta.h
         Cidade.cpp
         Cidade.h
-        Item.cpp
-        Item.h
         Mapa.cpp
         Mapa.h
         Tempestade.cpp
@@ -31,5 +29,9 @@ add_executable(projeto main.cpp
         Deserto.cpp
         Deserto.h
         Montanha.cpp
-        Montanha.h)
+        Montanha.h
+        Item.cpp
+        Item.h
+        CaravaBarbara.cpp
+        CaravaBarbara.h)
 

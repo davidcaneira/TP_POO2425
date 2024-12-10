@@ -1,9 +1,11 @@
-//
-// Created by anton on 13/11/2024.
-//
-
 #include "CaravanaSecreta.h"
 
-CaravanaSecreta::CaravanaSecreta(int x, int y): Caravana(x, y, 'S', 0,0,0) {
 
+CaravanaSecreta::CaravanaSecreta(int x, int y):Caravana(x, y, 'S', 20, 40, 200){
+
+}
+
+string CaravanaSecreta::getAsString() const
+{
+    return Caravana::getAsString();
 }

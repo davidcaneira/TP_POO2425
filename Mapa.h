@@ -3,7 +3,6 @@
 
 #include <string>
 #include <vector>
-
 #include "Buffer.h"
 #include "Cidade.h"
 #include "Deserto.h"
@@ -12,7 +11,7 @@
 #include "CaravanaComercio.h"
 #include "CaravanaMilitar.h"
 #include "CaravanaSecreta.h"
-
+using namespace std;
 
 class Mapa{
     int linhas;
@@ -20,15 +19,21 @@ class Mapa{
     Buffer buffer;
     char** mapaLogico;
     vector<Elemento*> elementos; // Vetor de elementos (privado)
-    std::vector<Cidade> cidades; // Lista de cidades
+    vector<Cidade> cidades; // Lista de cidades
 public:
     Mapa();
     ~Mapa();  // Destrutor
     bool carregarMapa(const string &nomeFicheiro);
     void mostrarMapa();
     void criaElementos();
-    const std::vector<Cidade>& getCidades() const; // // Metodo que retorna todas as cidades
-    std::vector<Elemento*>& getElementos(); // Retorna o vetor de elementos
+    void criaCaravana(int x, int y, char numero);
+
+    const vector<Cidade>& getCidades() const; // // Metodo que retorna todas as cidades
+    vector<Elemento*>& getElementos(); // Retorna o vetor de elementos
+
+    //getters
+    bool getInfoCidade (char letra);
+    bool getInfoCaravana (int id);
 
 };
 

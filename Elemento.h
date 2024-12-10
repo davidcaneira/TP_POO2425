@@ -1,6 +1,7 @@
 #ifndef PROJETO_ELEMENTO_H
 #define PROJETO_ELEMENTO_H
 
+#include <iostream>
 
 class Elemento {
 protected:
@@ -17,6 +18,8 @@ public:
     int getX() const;
     int getY() const;
     char getTipo() const;
+
+    virtual std::string getAsString() const;
 
 };
 

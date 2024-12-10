@@ -19,3 +19,7 @@ char Elemento::getTipo() const {
 void Elemento::getInfo() const {
     std::cout << "Elemento do tipo '" << tipo << "' na posição (" << x << ", " << y << ").\n";
 }
+
+string Elemento::getAsString() const
+{
+}

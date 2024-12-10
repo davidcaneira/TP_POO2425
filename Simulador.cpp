@@ -143,60 +143,114 @@ bool Simulador::verificaComando (const string &comando) {
 }
 
 bool Simulador::executaComandosFicheiro(const string &comando) {
+    std::cout << "Executando comandos do arquivo: " << comando << std::endl;
+    return true;
 }
 
 bool Simulador::avancaTurnos(const string &comando) {
+    std::cout << "Avançando turnos: " << comando << std::endl;
+    return true;
 }
 
 bool Simulador::compraCaravana(const string &comando) {
+    std::cout << "Comprando caravana: " << comando << std::endl;
+    return true;
 }
 
 bool Simulador::listaPrecosMercadorias(const string &comando) {
+    std::cout << "Listando preços de mercadorias: " << comando << std::endl;
+    return true;
 }
 
 bool Simulador::listaInfoCidade(const string &comando) {
+    istringstream iss(comando);
+    string primArg;
+    char letra;
+    iss >> primArg >> letra;
+
+    if (iss)
+    {
+        return mapa->getInfoCidade(letra);
+    }
+    return false;
 }
 
 bool Simulador::mostraInfoCaravana(const string &comando) {
+    istringstream iss(comando);
+    string primArg;
+    int id;
+    iss >> primArg >> id;
+
+    if (iss)
+    {
+        return mapa->getInfoCaravana(id);
+    }
+    return false;
 }
 
 bool Simulador::compraMercadorias(const string &comando) {
+    std::cout << "Comprando mercadorias: " << comando << std::endl;
+    return true;
 }
 
 bool Simulador::vendeMercadoria(const string &comando) {
+    std::cout << "Vendendo mercadoria: " << comando << std::endl;
+    return true;
 }
 
 bool Simulador::moveCaravana(const string &comando) {
+    std::cout << "Movendo caravana: " << comando << std::endl;
+    return true;
 }
 
 bool Simulador::autoCaravana(const string &comando) {
+    std::cout << "Colocando caravana no modo automático: " << comando << std::endl;
+    return true;
 }
 
 bool Simulador::stopAutoCaravana(const string &comando) {
+    std::cout << "Parando caravana do modo automático: " << comando << std::endl;
+    return true;
 }
 
 bool Simulador::criaCaravanaBarbara(const string &comando) {
+    std::cout << "Criando caravana bárbara: " << comando << std::endl;
+    return true;
 }
 
 bool Simulador::criaTempestade(const string &comando) {
+    std::cout << "Criando tempestade de areia: " << comando << std::endl;
+    return true;
 }
 
 bool Simulador::adicionaMoedas(const string &comando) {
+    std::cout << "Adicionando moedas: " << comando << std::endl;
+    return true;
 }
 
 bool Simulador::compraTripulantes(const string &comando) {
+    std::cout << "Comprando tripulantes: " << comando << std::endl;
+    return true;
 }
 
 bool Simulador::copiaBuffer(const string &comando) {
+    std::cout << "Copiando buffer: " << comando << std::endl;
+    return true;
 }
 
 bool Simulador::recuperaCopiaBuffer(const string &comando) {
+    std::cout << "Recuperando buffer: " << comando << std::endl;
+    return true;
 }
 
 bool Simulador::listaCopias(const string &comando) {
+    std::cout << "Listando cópias do buffer: " << comando << std::endl;
+    return true;
 }
 
 bool Simulador::eliminaCopiaBuffer(const string &comando) {
+    std::cout << "Eliminando cópia do buffer: " << comando << std::endl;
+    return true;
 }
 
 void Simulador::exibirMenuFase1() {

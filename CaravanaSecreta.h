@@ -11,6 +11,7 @@
 class CaravanaSecreta: public Caravana{
 public:
     CaravanaSecreta(int x, int y);
+    string getAsString() const override;
 
 };
 
